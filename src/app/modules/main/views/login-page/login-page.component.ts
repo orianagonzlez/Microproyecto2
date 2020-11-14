@@ -19,7 +19,7 @@ export class LoginPageComponent implements OnInit {
       .loginWithGoogle()
       .then(() => {
         if (this.authService.isAuthenticated()) {
-          this.router.navigate(['/']);
+          this.router.navigate(['/characters']);
         }
       })
       .catch((err) => console.log(err));

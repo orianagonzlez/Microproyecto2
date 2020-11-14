@@ -1,0 +1,27 @@
+<h3 class="text-center text-secondary">Detalle del personaje</h3>
+<div *ngIf="!loading"  class=" d-flex justify-content-center">
+
+    <div class="card m-3" style="width: 22rem;">
+        
+        <img class="card-img-top" src="{{ character.image }}" alt="character-image">
+        <div class="card-body">
+          <h5 class="card-title">{{ character.name }}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><span class="text-info">Locación: </span> {{ character.location.name}}</li>
+          <li class="list-group-item"><span class="text-info">Especie: </span>{{ character.species }}</li>
+          <li class="list-group-item"><span class="text-info">Género: </span>{{ character.gender }}</li>
+          <li class="list-group-item"><span class="text-info">Origen: </span>{{ character.origin.name }}</li>
+          <li class="list-group-item"><span class="text-info">Fecha de creación: </span>{{ character.created }}</li>
+        </ul>
+        <div class="card-body d-flex justify-content-between" *ngIf="isAuthenticated">
+            <button type="button" class="btn btn-outline-danger">Eliminar favorito</button>
+            <button type="button" class="btn btn-outline-warning">Favorito</button>
+            
+          </div>
+      </div>
+</div>
+
+<div *ngIf="loading">
+    Cargando
+</div>

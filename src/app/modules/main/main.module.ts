@@ -6,6 +6,9 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { LoginPageComponent } from './views/login-page/login-page.component';
 import { FavsPageComponent } from './views/favs-page/favs-page.component';
+import { HomePageComponent } from './views/home-page/home-page.component';
+import { CharactersPageComponent } from './views/characters-page/characters-page.component';
+import { SelectedCharacterPageComponent } from './views/selected-character-page/selected-character-page.component';
 
 
 @NgModule({
@@ -13,7 +16,10 @@ import { FavsPageComponent } from './views/favs-page/favs-page.component';
     MainLayoutComponent,
     NavbarComponent,
     LoginPageComponent,
-    FavsPageComponent
+    FavsPageComponent,
+    HomePageComponent,
+    CharactersPageComponent,
+    SelectedCharacterPageComponent
   ],
   imports: [
     CommonModule,
