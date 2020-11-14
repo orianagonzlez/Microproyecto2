@@ -1,5 +1,80 @@
+<div class="container d-flex flex-wrap justify-content-center">
+    
+    <div class="d-flex">
+        <input type="text" [(ngModel)]="name" class="form-control mb-3"> 
+        <button type="button" class="btn btn-info ml-3  mb-3" (click)="buscarNombre()">Buscar</button>
+    </div>
+    
+    
+    <div class="btn-group ml-3  mb-3">
+        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Estatus
+        </button>
+        <div class="dropdown-menu">
+            <button
+              class="btn text-warning dropdown-item"
+              (click)="getAlive()"
+            >Alive</button>
+            <button
+            class="btn text-warning dropdown-item"
+            (click)="getDead()"
+          >Dead</button>
+          <button
+              class="btn text-warning dropdown-item"
+              (click)="getUnknown()"
+            >Unknown</button>
+       </div>
+    </div>  
 
-<div class="container justify-content-center">
+    <div class="btn-group ml-3  mb-3">
+        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Género
+        </button>
+        <div class="dropdown-menu">
+            <button
+              class="btn text-warning dropdown-item"
+              (click)="getFemale()"
+            >Female</button>
+            <button
+            class="btn text-warning dropdown-item"
+            (click)="getMale()"
+          >Male</button>
+          <button
+              class="btn text-warning dropdown-item"
+              (click)="getGenderUnknown()"
+            >Unknown</button>
+            <button
+              class="btn text-warning dropdown-item"
+              (click)="getGenderless()"
+            >Genderless</button>
+       </div>
+    </div> 
+    
+    <button type="button" class="btn btn-secondary ml-3  mb-3" (click)="filtrar()">Filtrar</button>
+
+</div>
+
+<div class="container mt-4 d-flex flex-column align-items-center" *ngIf="filtros">
+    <div class="d-flex justify-content-between w-50 m-3">
+        <span>Ingrese la especie: </span>
+        <input type="text" [(ngModel)]="especie" class="form-control"> 
+    </div>
+    <div class="d-flex justify-content-between w-50 m-3">
+        <span>Ingrese el tipo: </span>
+        <input type="text" [(ngModel)]="tipo" class="form-control"> 
+    </div>
+    <button type="button" class="btn btn-info ml-3 w-50" (click)="aplicarFiltros()">Aplicar filtros</button>
+</div>
+
+<!-- 
+  <input type="text" [(ngModel)]="name">
+<p> {{ name }} </p>  
+-->
+
+	
+
+
+<div class="container justify-content-center mt-3">
     <div class="row justify-content-around">
         <div class="card w-50 col-sm-6 col-md-4 col-lg-3 m-3 p-0" *ngFor="let character of characters">
             <img class="card-img-top" src="{{ character.image }}" alt="Character-image">

@@ -9,6 +9,7 @@ import { FavsPageComponent } from './views/favs-page/favs-page.component';
 import { HomePageComponent } from './views/home-page/home-page.component';
 import { CharactersPageComponent } from './views/characters-page/characters-page.component';
 import { SelectedCharacterPageComponent } from './views/selected-character-page/selected-character-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,6 +25,8 @@ import { SelectedCharacterPageComponent } from './views/selected-character-page/
   imports: [
     CommonModule,
     MainRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
     
   ]
 })

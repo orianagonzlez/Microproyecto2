@@ -19,4 +19,5 @@ export class ApiRequestService {
   getCharacter(characterId: number): Promise<AxiosResponse<Character>> {
     return Axios.get(`${this.API_URL}/${characterId}`);
   }
+  
 }
