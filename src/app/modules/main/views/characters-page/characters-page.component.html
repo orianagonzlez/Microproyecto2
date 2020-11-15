@@ -83,9 +83,9 @@
                     <h3 class="card-text">{{ character.name }}</h3>
                     <a [routerLink]="['/characters', character.id]" class="text-success">Detalles del personaje</a>
                 </div>
-                <div class="card-body d-flex justify-content-between" *ngIf="isAuthenticated">
-                    <button type="button" class="btn btn-outline-danger">Eliminar favorito</button>
-                    <button type="button" class="btn btn-outline-warning">Favorito</button>  
+                <div class="card-body d-flex flex-column justify-content-between" *ngIf="isAuthenticated">
+                    <button type="button" class="btn btn-outline-danger mb-3" (click)="addFavorite(character.id)">Eliminar favorito</button>
+                    <button type="button" class="btn btn-outline-warning" (click)="addFavorite(character.id)">Favorito</button>  
                   </div>
             </div>
         </div>

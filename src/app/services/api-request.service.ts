@@ -20,4 +20,7 @@ export class ApiRequestService {
     return Axios.get(`${this.API_URL}/${characterId}`);
   }
   
+  getSomeCharacters(pageUrl: string): Promise<any>{
+    return Axios.get(pageUrl);
+  }
 }

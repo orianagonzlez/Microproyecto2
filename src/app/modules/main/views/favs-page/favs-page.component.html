@@ -1,1 +1,20 @@
-<p>favs-page works!</p>
+<div class="jumbotron jumbotron-fluid" *ngIf="!hayFavs">
+    <div class="container">
+      <h1 class="display-4">No hay favoritos</h1>
+      <p class="lead">Guarda tus personajes favoritos y encuéntralos aquí!</p>
+    </div>
+  </div>
+
+<div class="container justify-content-center mt-3" *ngIf="hayFavs">
+    <div class="row justify-content-around">
+        <div class="card w-50 col-sm-6 col-md-4 col-lg-3 m-3 p-0" *ngFor="let character of characters">
+            <img class="card-img-top" src="{{ character.image }}" alt="Character-image">
+            <div class="card-body align-content">
+                <div class="container">
+                    <h3 class="card-text">{{ character.name }}</h3>
+                    <a [routerLink]="['/characters', character.id]" class="text-success">Detalles del personaje</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

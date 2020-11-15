@@ -1,17 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'firebase';
 import { APIResponse } from 'src/app/models/apiresponse';
 import { Character } from 'src/app/models/character';
 import { ApiRequestService } from 'src/app/services/api-request.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { FavoritesService } from 'src/app/services/favorites.service';
 
 @Component({
   selector: 'app-characters-page',
   templateUrl: './characters-page.component.html',
   styleUrls: ['./characters-page.component.scss']
 })
+
 export class CharactersPageComponent implements OnInit {
+  user: User = null;
   isAuthenticated = false;
   loading= false;
   page: APIResponse;
@@ -23,7 +27,7 @@ export class CharactersPageComponent implements OnInit {
   tipo = '';
   name = '';
 
-  constructor(private apiRequest: ApiRequestService, private authService: AuthService, private router: Router) {}
+  constructor(private apiRequest: ApiRequestService, private authService: AuthService, private router: Router, private favsService: FavoritesService) {}
 
   ngOnInit(): void {
     this.getPage('https://rickandmortyapi.com/api/character');
@@ -103,11 +107,22 @@ export class CharactersPageComponent implements OnInit {
   getCurrentUser(): void {
     this.authService.getCurrentUser().subscribe((response) => {
       if (response) {
+        this.user = response;
         this.isAuthenticated = true;
+        console.log(this.user.uid);
         return;
+        
       }
       this.isAuthenticated = false; 
+      this.user = null;
+
     });
+  }
+
+  addFavorite(characterId: number): void{
+    this.favsService.addFavorite(this.user.uid, characterId).then((res) => {
+      console.log('agregado o eliminado');
+    }).catch(err => console.log(err));
   }
 
 }
